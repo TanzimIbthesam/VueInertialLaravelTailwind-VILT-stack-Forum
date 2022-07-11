@@ -6,22 +6,22 @@
     </a>
     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{post.data.description}}</p>
     <div v-if="post.data.image">
-       <img :src="`http://127.0.0.1:8000/storage/product_images/${post.data.image}`" alt="Girl in a jacket" width="500" height="600"> 
+       <img :src="`http://127.0.0.1:8000/storage/product_images/${post.data.image}`" alt="Girl in a jacket" width="500" height="600">
     </div>
-    <Link 
-      
+    <Link
+
        :href="route('user.show',{user: post.data.user.slug})"
        class="text-blue-600 font-serif pointer"
-    
+
 
     >
     Postedby-{{post.data.user.name}}
     </Link>
-    <Link 
-      
+    <Link
+
        :href="route('categories.show',{category:post.data.category.slug})"
        class="text-blue-600 font-serif pointer"
-    
+
 
     >
     Category-{{post.data.category.name}}
@@ -30,11 +30,11 @@
         {{ $page.props.flash.message }}
       </div>
      <div class="text-black font-serif">Comments</div>
-     
+
      <form v-if="user" @submit.prevent="commentSubmit" method="post">
           <div class="">
   <div class="mb-3 xl:w-96">
-    
+
     <textarea
       class="
         form-control
@@ -64,27 +64,32 @@
   </div>
 </div>
      </form>
-    
+
       <div v-for="comment in post.data.comments" :key="comment.id">
        {{comment.content}}
       {{comment.user.name}}
        <div v-if="user">
-       
-     <Link 
+
+     <Link
        v-if="comment.user_id===user.id || user.id===post.data.user.id"
         @click="destroy(comment.id)"
     class="bg-red-600 font-serif text-white border rounded-md px-6 py-1">Delete</Link>
        </div>
-       
-       
-      
-    
-    
-      
-     </div> 
-     <div v-if="!user">To Comment please Login</div>
 
-</div> 
+
+
+
+
+
+     </div>
+     <div v-if="!user">
+     <Link class="text-blue-600 font-serif text-md" :href="route('login')">Login</Link>
+     Dont have an account?
+     <Link class="text-blue-600 font-serif text-md" :href="route('register')">Register?</Link>
+     </div>
+
+
+</div>
 
 </template>
 
@@ -108,15 +113,15 @@ const props=defineProps({
 let form=useForm({
     content:'',
 	post_id:props.post.data.id,
-  
+
 })
 const commentSubmit=()=>{
-    
+
      form.post(route('comment.store'));
      form.content='';
 }
 const destroy=(id)=>{
- 
+
     Inertia.delete(route("comment.destroy",id));
 }
 </script>

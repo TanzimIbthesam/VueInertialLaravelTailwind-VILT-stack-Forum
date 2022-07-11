@@ -43,6 +43,9 @@
                          <Link class="inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4 cursor-pointer" :href="route('categories.create')" >
                        <div class="text-blue-500">Create Category</div>
                           </Link>
+                         <Link class="inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4 cursor-pointer" :href="route('admin.creatuser')" >
+                       <div class="text-blue-500">Create User</div>
+                          </Link>
                          <Link class="inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4 cursor-pointer" :href="route('admin.posts')" >
                        <div class="text-blue-500">Admin Posts</div>
                           </Link>

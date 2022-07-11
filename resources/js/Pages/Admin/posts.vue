@@ -57,10 +57,7 @@
                  <Link
                v-if="user.role_id===1"
                @click="destroy(post.id)"
-               class="bg-red-600 text-white px-4 py-1 rounded-md"
-
-
-    >Delete</Link>
+               class="bg-red-600 text-white px-4 py-1 rounded-md">Delete</Link>
               </td>
              <td>
 

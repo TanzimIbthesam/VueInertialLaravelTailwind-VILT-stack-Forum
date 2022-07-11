@@ -32,9 +32,9 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
-        Gate::define('onlyadmin',function($user){
-              return $user->role_id<=3;
-        });
+          Gate::define('onlyadmin',function(User $user){
+            return $user->role_id<=3;
+          });
         Gate::define('update-post', function (User $user, Post $post) {
             return $user->id === $post->user_id;
         });

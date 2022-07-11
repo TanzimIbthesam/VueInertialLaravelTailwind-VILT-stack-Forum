@@ -1,30 +1,41 @@
 <script setup>
 import BreezeButton from '@/Components/Button.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
+
 import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
+import Header from './header.vue';
+import SuccessMessage from '@/Components/SuccessMessage.vue';
 const form = useForm({
     name: '',
     email: '',
     password: '',
     password_confirmation: '',
-    terms: false,
+
+    role_id:'',
+    terms:false
 });
+defineProps({
+    'roles':{
+        type:Object
+    }
+})
 
 const submit = () => {
-    form.post(route('register'), {
+    form.post(route('admin.usersstore'), {
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
+    form='';
 };
 </script>
 
 <template>
-<div class="container mx-auto">
-<BreezeGuestLayout>
-        <Head title="Register" />
+<Header />
+<SuccessMessage />
+<div class="container mx-auto mt-32">
+
 
         <BreezeValidationErrors class="mb-4" />
 
@@ -35,10 +46,24 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <BreezeLabel for="email" value="Email" />
+                <BreezeLabel for="email" />
                 <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autocomplete="username" />
             </div>
+            <div class="mt-4">
+                <select
+                class="bg-gray-50 border border-gray-300
+                text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
+                dark:border-gray-600 dark:placeholder-gray-400 dark:text-whit
+                e dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                v-model="form.role_id"
 
+                >
+                <option selected>Choose role</option>
+                <option  v-for="role in roles"
+                :key="role.id" :value="role.id">{{role.name}}</option>
+               ></select>
+            </div>
             <div class="mt-4">
                 <BreezeLabel for="password" value="Password" />
                 <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
@@ -59,7 +84,7 @@ const submit = () => {
                 </BreezeButton>
             </div>
         </form>
-    </BreezeGuestLayout>
+
 </div>
 
 </template>

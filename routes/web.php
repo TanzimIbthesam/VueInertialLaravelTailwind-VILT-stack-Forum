@@ -35,6 +35,11 @@ Route::get('/dashboard', function () {
 Route::get('/admin',[AdminController::class,'index'])->name('admin')->middleware('auth','can:onlyadmin');
 Route::get('/adminposts',[AdminController::class,'adminpostsbycategories'])->name('admin.posts')->middleware('auth','can:onlyadmin');
 
+Route::get('/adminusercreate',[AdminController::class,'usercreate'])->name('admin.creatuser')->middleware('auth','can:onlyadmin');
+Route::post('/adminuserstsore',[AdminController::class,'userstore'])->name('admin.usersstore')->middleware('auth','can:onlyadmin');
+
+
+
 Route::resource('categories',CategoryController::class);
  Route::get('categories/create',[CategoryController::class,'create'])
  ->name('categories.create')->middleware('auth','can:onlyadmin');
