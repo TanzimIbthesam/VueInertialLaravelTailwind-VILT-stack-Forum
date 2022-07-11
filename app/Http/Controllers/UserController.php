@@ -6,6 +6,7 @@ use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -50,13 +51,14 @@ class UserController extends Controller
     public function show($user)
     {
         //
+
         // return User::where('slug',$user)->with('posts')->first();
         return Inertia::render('Users/UserPosts',[
-           
+
              'userPosts'=>User::where('slug',$user)->with('posts')->first(),
             'user'=>User::where('slug',$user)->firstOrFail(),
-          
-            
+
+
 
       ]);
     }
@@ -93,5 +95,16 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function profile(Request $request){
+
+         return Inertia::render('User/profile',[
+            'userposts'=>$request->user()->posts
+         ]);
+    }
+
+    public function usersposts(Request $request){
+        return $request->user()->posts;
     }
 }

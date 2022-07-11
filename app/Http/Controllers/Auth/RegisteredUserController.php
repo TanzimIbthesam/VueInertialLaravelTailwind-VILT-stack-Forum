@@ -17,7 +17,7 @@ use Inertia\Inertia;
 class RegisteredUserController extends Controller
 {
     /**
-     * Display the registration view.
+     * Display the registration view.git push -
      *
      * @return \Inertia\Response
      */

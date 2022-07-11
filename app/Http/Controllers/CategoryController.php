@@ -26,7 +26,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        return Inertia::render('Category/index');
+        return Category::query()->get();
     }
 
     /**
@@ -40,7 +40,7 @@ class CategoryController extends Controller
         // return new CategoryCollection(Category::query()->paginate(10));
         return Inertia::render('Category/create',[
             'categories'=>new CategoryCollection(Category::query()->paginate(10)),
-            
+
         ]);
     }
 
@@ -68,13 +68,13 @@ class CategoryController extends Controller
      */
     public function show($category)
     {
-       
+
         return Inertia::render('Category/show',[
                 // 'postsByCategory'=>Category::findorFail($id)->posts
                  'postsByCategory'=>Category::where('slug',$category)->with('posts')->first()
-                
+
         ]);
-        
+
     }
 
     /**

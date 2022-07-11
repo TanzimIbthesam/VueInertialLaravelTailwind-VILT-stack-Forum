@@ -36,10 +36,10 @@ const showingNavigationDropdown = ref(false);
                                  <BreezeNavLink :href="route('post.create')" >
                                    Create Posts
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('home')" :active="route().current('dashboard')">
+                                <BreezeNavLink :href="route('home')">
                                    Home
                                 </BreezeNavLink>
-                                
+
                             </div>
                         </div>
 
@@ -63,6 +63,9 @@ const showingNavigationDropdown = ref(false);
                                         <BreezeDropdownLink :href="route('logout')" method="post" as="button">
                                             Log Out
                                         </BreezeDropdownLink>
+                                        <BreezeDropdownLink :href="route('myprofile')" method="get" as="button">
+                                            My Profile
+                                        </BreezeDropdownLink>
                                     </template>
                                 </BreezeDropdown>
                             </div>
@@ -84,14 +87,15 @@ const showingNavigationDropdown = ref(false);
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <BreezeResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                            Dashboardddd
                         </BreezeResponsiveNavLink>
                         <BreezeResponsiveNavLink :href="route('post.index')" :active="route().current('post.index')">
-                            Posts
+                            Postssss
                         </BreezeResponsiveNavLink>
                         <BreezeResponsiveNavLink :href="route('post.create')" :active="route().current('post.create')">
-                            Create Post
+                            Create Postttt
                         </BreezeResponsiveNavLink>
+
                     </div>
 
                     <!-- Responsive Settings Options -->
@@ -103,8 +107,9 @@ const showingNavigationDropdown = ref(false);
 
                         <div class="mt-3 space-y-1">
                             <BreezeResponsiveNavLink :href="route('logout')" method="post" as="button">
-                                Log Out
+                                Log Outttt
                             </BreezeResponsiveNavLink>
+
                         </div>
                     </div>
                 </div>

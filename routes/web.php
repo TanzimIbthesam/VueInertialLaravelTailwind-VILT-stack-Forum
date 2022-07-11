@@ -32,7 +32,10 @@ Route::get('/test/home',function(){
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/admin',[AdminController::class,'index'])->name('admin')->middleware('auth','can:onlyadmin');
+
+Route::get('myprofile',[UserController::class,'profile'])->name('myprofile')->middleware('auth');
+Route::get('authuserposts',[UserController::class,'usersposts'])->middleware('auth');
+Route::get('/admin',[AdminController::class,'index'])->name('admin')->middleware('auth','verified','can:onlyadmin');
 Route::get('/adminposts',[AdminController::class,'adminpostsbycategories'])->name('admin.posts')->middleware('auth','can:onlyadmin');
 
 Route::get('/adminusercreate',[AdminController::class,'usercreate'])->name('admin.creatuser')->middleware('auth','can:onlyadmin');

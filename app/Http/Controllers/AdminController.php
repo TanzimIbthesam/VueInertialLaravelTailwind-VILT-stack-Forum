@@ -44,13 +44,14 @@ class AdminController extends Controller
         $user = User::create([
             'name' => $request->name,
             'slug'=>Str::slug($request->name),
-             'role_id'=>$request->input('role_id'),
+             'role_id'=>$request->role_id,
             'email' =>$request->email,
             'password' =>Hash::make($request->password),
         ]);
        $user->save();
+       return redirect()->back()->with('message','User has been created.Please inform the user to verify his/her email');
        event(new Registered($user));
 
-       return redirect()->back()->with('message','User has been created.Please inform the user to verify his/her email');
+
     }
 }

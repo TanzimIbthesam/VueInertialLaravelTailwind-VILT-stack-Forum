@@ -789,6 +789,9 @@ select {
 .mt-32 {
   margin-top: 8rem;
 }
+.mt-16 {
+  margin-top: 4rem;
+}
 .block {
   display: block;
 }
@@ -875,6 +878,12 @@ select {
 }
 .w-1\/4 {
   width: 25%;
+}
+.w-64 {
+  width: 16rem;
+}
+.w-3\/4 {
+  width: 75%;
 }
 .min-w-full {
   min-width: 100%;
@@ -1009,6 +1018,11 @@ select {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+.space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .overflow-auto {
   overflow: auto;
@@ -1272,6 +1286,9 @@ select {
 .p-2\.5 {
   padding: 0.625rem;
 }
+.p-24 {
+  padding: 6rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1319,6 +1336,18 @@ select {
 .py-1\.5 {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
+}
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 .pt-0 {
   padding-top: 0px;
