@@ -79,8 +79,8 @@
   </div>
 </div>
 
-paginator
-<div>{{posts.links}}</div>
+
+
 <Link
 v-for="link in posts.links"
 :href="link.url"

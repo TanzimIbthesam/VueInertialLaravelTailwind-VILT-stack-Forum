@@ -67,8 +67,11 @@ class UserPolicy
     {
         //
     }
-
+     public function onlyadmin(User $user,User $model){
+        return $user->role_id<=3;
+     }
     /**
+     *
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user

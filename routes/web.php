@@ -32,11 +32,12 @@ Route::get('/test/home',function(){
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/admin',[AdminController::class,'index'])->name('admin')->middleware('auth','can:createcategory');
-Route::get('/adminposts',[AdminController::class,'adminpostsbycategories'])->name('admin.posts')->middleware('auth','can:createcategory');
+Route::get('/admin',[AdminController::class,'index'])->name('admin')->middleware('auth','can:onlyadmin');
+Route::get('/adminposts',[AdminController::class,'adminpostsbycategories'])->name('admin.posts')->middleware('auth','can:onlyadmin');
 
 Route::resource('categories',CategoryController::class);
- Route::get('categories/create',[CategoryController::class,'create'])->middleware('auth','can:createcategory')->name('categories.create');
+ Route::get('categories/create',[CategoryController::class,'create'])
+ ->name('categories.create')->middleware('auth','can:onlyadmin');
 
 Route::resource('post',PostController::class);
 Route::resource('user',UserController::class);

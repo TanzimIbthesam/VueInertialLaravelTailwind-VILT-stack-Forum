@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use App\Policies\CategoryPolicy;
+use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -18,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        Category::class=>CategoryPolicy::class
+         //User::class=>UserPolicy::class
     ];
 
     /**
@@ -31,12 +32,12 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
-        Gate::define('createcategory',function($user){
+        Gate::define('onlyadmin',function($user){
               return $user->role_id<=3;
         });
         Gate::define('update-post', function (User $user, Post $post) {
             return $user->id === $post->user_id;
         });
     }
-     
+
 }
