@@ -35,13 +35,13 @@ Route::get('/dashboard', function () {
 
 Route::get('myprofile',[UserController::class,'profile'])->name('myprofile')->middleware('auth');
 Route::get('authuserposts',[UserController::class,'usersposts'])->middleware('auth');
-Route::get('/admin',[AdminController::class,'index'])->name('admin')->middleware('auth','verified','can:onlyadmin');
+Route::get('/admin',[AdminController::class,'index'])->name('admin')->middleware('auth','can:onlyadmin');
 Route::get('/adminposts',[AdminController::class,'adminpostsbycategories'])->name('admin.posts')->middleware('auth','can:onlyadmin');
 
 Route::get('/adminusercreate',[AdminController::class,'usercreate'])->name('admin.creatuser')->middleware('auth','can:onlyadmin');
 Route::post('/adminuserstsore',[AdminController::class,'userstore'])->name('admin.usersstore')->middleware('auth','can:onlyadmin');
 
-Route::put('/updateprofile',[UserController::class,'profileupdate'])->name('profile.update')->middleware('auth');
+Route::post('/updateprofile',[UserController::class,'profileupdate'])->name('profile.update')->middleware('auth');
 
 Route::resource('categories',CategoryController::class);
  Route::get('categories/create',[CategoryController::class,'create'])

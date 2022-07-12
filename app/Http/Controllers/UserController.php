@@ -107,10 +107,13 @@ class UserController extends Controller
     }
 
     public function profileupdate(Request $request, User $user){
-          $user=optional(request()->user)->id;
+        $user = Auth::user();
 
-          $user->name=$request->name;
-          $user->update();
+          $user->name=$request->input('name');
+
+           $user->save();
+
+
 
     }
 }

@@ -1,8 +1,9 @@
 <template>
 <div>
-    <label>Write your name</label><br>
+    <label>Change your name</label><br>
     <form @submit.prevent="handleSubmit">
-<input type="text" v-model="user.name" class="px-6 py-1 border rounded-md mb-2" /><br>
+    Your name-{{user.name}}<br>
+<input type="text" v-model="form.name" class="px-6 py-1 border rounded-md mb-2" /><br>
 <button class="bg-blue-600 text-white px-6 py-1 text-white font-serif">Save</button>
     </form>
 
@@ -22,7 +23,8 @@ let form=useForm({
 })
 const handleSubmit=()=>{
 
-    form.put(route('profile.update',form.id));
+    form.post(route('profile.update'));
 
 }
+
 </script>
