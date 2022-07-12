@@ -122,6 +122,7 @@ class PostController extends Controller
 
 
 
+        // return Post::where('slug',$post)->with('user','comments.user')->firstOrFail();
         // return new PostResource(Post::where('slug',$post)->with('user')->firstOrFail());
         return Inertia::render('Posts/PostDetail',[
              'post'=>new PostResource(Post::where('slug',$post)->with('user','comments')->firstOrFail())
