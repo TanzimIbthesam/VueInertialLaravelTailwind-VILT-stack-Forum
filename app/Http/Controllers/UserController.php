@@ -97,14 +97,20 @@ class UserController extends Controller
         //
     }
 
-    public function profile(Request $request){
+    public function profile(){
 
-         return Inertia::render('User/profile',[
-            'userposts'=>$request->user()->posts
-         ]);
+         return Inertia::render('User/profile');
     }
 
     public function usersposts(Request $request){
         return $request->user()->posts;
+    }
+
+    public function profileupdate(Request $request, User $user){
+          $user=optional(request()->user)->id;
+
+          $user->name=$request->name;
+          $user->update();
+
     }
 }

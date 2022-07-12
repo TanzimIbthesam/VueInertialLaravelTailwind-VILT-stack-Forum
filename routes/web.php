@@ -41,7 +41,7 @@ Route::get('/adminposts',[AdminController::class,'adminpostsbycategories'])->nam
 Route::get('/adminusercreate',[AdminController::class,'usercreate'])->name('admin.creatuser')->middleware('auth','can:onlyadmin');
 Route::post('/adminuserstsore',[AdminController::class,'userstore'])->name('admin.usersstore')->middleware('auth','can:onlyadmin');
 
-
+Route::put('/updateprofile',[UserController::class,'profileupdate'])->name('profile.update')->middleware('auth');
 
 Route::resource('categories',CategoryController::class);
  Route::get('categories/create',[CategoryController::class,'create'])
