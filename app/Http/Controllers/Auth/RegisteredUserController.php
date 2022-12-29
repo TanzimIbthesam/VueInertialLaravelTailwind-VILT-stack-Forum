@@ -42,11 +42,12 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'slug'=>Str::slug($request->name),
             'email' =>$request->email,
+            'role_id'=>4,
             'password' => Hash::make($request->password),
         ]);
 
         $user->save();
-        event(new Registered($user));
+         event(new Registered($user));
 
         Auth::login($user);
 

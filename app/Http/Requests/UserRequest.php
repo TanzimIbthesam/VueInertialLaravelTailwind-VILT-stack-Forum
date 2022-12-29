@@ -28,7 +28,7 @@ class UserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'slug'=>'string',
             'email' => 'required|string|email|max:255|unique:users',
-            'role_id'=>'required',
+            // 'role_id'=>'required',
             'password' => ['required', 'confirmed',Rules\Password::defaults()],
         ];
     }
